@@ -13,13 +13,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import emailjs from "emailjs-browser";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   useEffect(() => {
     console.log("Initializing EmailJS...");
     emailjs.init(process.env.NEXT_PUBLIC_PUBLIC_KEY);
   }, []);
+
+  
 
   const [formData, setFormData] = useState({
     firstname: "",
@@ -51,7 +53,7 @@ const Contact = () => {
   const validateForm = () => {
     console.log("Validating form...");
     console.log("Current form data:", formData);
-    
+
     if (!formData.firstname.trim()) {
       setError("First name is required");
       return false;
@@ -79,7 +81,7 @@ const Contact = () => {
     console.log("Form submission started");
     event.preventDefault();  // Prevent form from submitting normally
     event.stopPropagation(); // Stop event bubbling
-    
+
     console.log("Checking validation...");
     if (!validateForm()) {
       console.log("Validation failed");
@@ -89,7 +91,7 @@ const Contact = () => {
     console.log("Setting loading state...");
     setLoading(true);
     setError("");
-    
+
     const templateParams = {
       to_name: "Solomon",
       firstname: formData.firstname,
@@ -103,7 +105,7 @@ const Contact = () => {
     console.log("Preparing to send email with params:", templateParams);
     console.log("Using service ID:", process.env.NEXT_PUBLIC_SERVICE_ID);
     console.log("Using template ID:", process.env.NEXT_PUBLIC_TEMPLATE_ID);
-    
+
     try {
       console.log("Sending email...");
       const result = await emailjs.send(
@@ -113,7 +115,7 @@ const Contact = () => {
       );
 
       console.log('EmailJS Response:', result);
-      
+
       if (result.status === 200) {
         console.log("Email sent successfully");
         setSuccess(true);
@@ -134,7 +136,7 @@ const Contact = () => {
       console.log("Resetting loading state");
       setLoading(false);
     }
-    
+
     return false; // Prevent form submission
   };
 
@@ -143,11 +145,8 @@ const Contact = () => {
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
           <div className="xl:w-[54%]">
-            <form 
-              onSubmit={(e) => {
-                console.log("Form onSubmit triggered");
-                handleSubmit(e);
-              }} 
+            <form
+              onSubmit={handleSubmit}
               className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
             >
               <h3 className="text-4xl text-accent">Let's work together</h3>
@@ -234,10 +233,10 @@ const Contact = () => {
                 required
               />
 
-              <Button 
-                type="button" // Changed from "submit" to "button"
+              <Button
+                type="submit"
                 onClick={handleSubmit}
-                size="md" 
+                size="md"
                 className="w-full"
                 disabled={loading}
               >
