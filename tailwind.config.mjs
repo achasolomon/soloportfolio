@@ -19,7 +19,7 @@ export default {
 
 		},
 		fontFamily: {
-			primary: "var(--font-jetBrainsMono)",
+			primary: "var(--font-jetbrains_mono)",
 			 
 		},
 	

@@ -7,25 +7,25 @@ const services = [
   {
     num: '01',
     title: 'Web Development',
-    description: 'lLorem ipsum dolor sit amet consectetur adipisicing elit. Alias minima officia sit.',
+    description: 'Building responsive, user-friendly websites and web applications tailored to meet the specific needs of your business. We leverage modern technologies to create scalable, fast, and secure solutions.',
     href: ""
   },
   {
     num: '02',
     title: 'Graphic Design',
-    description: 'lLorem ipsum dolor sit amet consectetur adipisicing elit. Alias minima officia sit.',
+    description: 'Crafting visually stunning designs that communicate your brand’s message effectively. From brochures to social media graphics, we create designs that resonate with your audience.',
     href: ""
   },
   {
     num: '03',
     title: 'Logo Design',
-    description: 'lLorem ipsum dolor sit amet consectetur adipisicing elit. Alias minima officia sit.',
+    description: 'Designing unique, memorable logos that reflect your brand identity. Our creative process ensures your logo stands out and leaves a lasting impression.',
     href: ""
   },
   {
     num: '04',
     title: 'SEO',
-    description: 'lLorem ipsum dolor sit amet consectetur adipisicing elit. Alias minima officia sit.',
+    description: 'Optimizing your website to rank higher on search engines and attract organic traffic. We implement strategies to improve visibility, boost credibility, and drive conversions.',
     href: ""
   },
 
@@ -59,7 +59,7 @@ const Services = () => {
                 </div>{/*heading */}
                 <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500">{service.title}</h2>
                 {/*description */}
-                <p className="text-white/60">{service.description}</p>
+                <p className="text-white/60 text-justify">{service.description}</p>
                 {/*border */}
                 <div className="border-b border-white/20 w-full"></div>
               </div>
