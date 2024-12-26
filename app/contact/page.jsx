@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import emailjs from "emailjs-com";
+import emailjs from "emailjs-browser";
 
 const Contact = () => {
   useEffect(() => {
