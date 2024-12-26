@@ -5,6 +5,16 @@ import { Button } from "@/components/ui/button"
 import { FiDownload } from "react-icons/fi"
 
 const Home = () => {
+  const handleDownload = () => {
+    // Create a link element
+    const link = document.createElement('a');
+    link.href = '/assets/resume/Acharesume.pdf';
+    link.download = 'Acha_Solomon_CV.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section className="h-full">
       <div className="container mx-auto h-full">
@@ -22,13 +32,21 @@ const Home = () => {
             </p>
             {/* btn and socials */}
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button variant="outline" size="lg" className="uppercase flex items-center gap-2">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="uppercase flex items-center gap-2"
+                onClick={handleDownload}
+                type="button"
+              >
                 <span>Download CV</span>
                 <FiDownload className="text-xl" />
               </Button>
               <div className="mb-8 xl:mb-0 ">
-                <Socials containerStyles="flex gap-6" iconStyles="w-9 h-9 border border-accent rounded-full flex justify-center items-center text-accent 
-                text-base hover:bg-accent hover:text-primary hover:transition-all duration-500"/>
+                <Socials 
+                  containerStyles="flex gap-6" 
+                  iconStyles="w-9 h-9 border border-accent rounded-full flex justify-center items-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500"
+                />
               </div>
             </div>
           </div>
@@ -40,7 +58,8 @@ const Home = () => {
         </div>
       </div>
       <Stats/>
-    </section>)
+    </section>
+  )
 }
 
 export default Home
