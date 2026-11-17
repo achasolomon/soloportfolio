@@ -1,68 +1,25 @@
+import Image from "next/image";
+import Link from "next/link";
+import { AppWindow, ArrowRight, ArrowUpRight, Code2, Database, Layers3, MapPin, MessageCircle, Users } from "lucide-react";
+import { FaReact, FaNodeJs, FaPython, FaPhp, FaJava, FaAws } from "react-icons/fa";
+import { SiLaravel, SiNestjs, SiMysql, SiJavascript, SiExpress, SiTailwindcss, SiDotnet, SiOpencv, SiSpringboot, SiExpo } from "react-icons/si";
+import { TbBrandCSharp } from "react-icons/tb";
+import ProjectCard from "@/components/ProjectCard";
+import EngagementList from "@/components/EngagementList";
+import { featuredProjects, additionalProjects } from "@/lib/portfolio";
 
-"use client";
+const stack = [[FaReact,"React","#61dafb"],[FaReact,"React Native","#61dafb"],[SiExpo,"Expo","#edf5f2"],[SiJavascript,"JavaScript","#f2d54d"],[FaNodeJs,"Node.js","#86bd53"],[SiLaravel,"Laravel","#ff6458"],[SiNestjs,"NestJS","#ee5876"],[FaJava,"Java","#ef9b63"],[SiSpringboot,"Spring Boot","#8cc96b"],[TbBrandCSharp,"C#","#bb82ed"],[SiDotnet,".NET","#aa86f4"],[AppWindow,"WPF","#75b9ed"],[SiOpencv,"OpenCV","#74d0aa"],[FaPython,"Python","#85b9dd"],[FaPhp,"PHP","#aaa7d3"],[SiMysql,"MySQL","#e5b46e"],[SiExpress,"Express","#d6dfdf"],[SiTailwindcss,"Tailwind CSS","#48c7e6"],[FaAws,"AWS","#edb15a"]];
 
-import Photo from "@/components/Photo"
-import Socials from "@/components/Socials"
-import Stats from "@/components/Stats"
-import { Button } from "@/components/ui/button"
-import { FiDownload } from "react-icons/fi"
-
-const Home = () => {
-  const handleDownload = () => {
-    // Create a link element
-    const link = document.createElement('a');
-    link.href = '/assets/resume/Acharesume.pdf';
-    link.download = 'Acha_Solomon_CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  return (
-    <section className="h-full">
-      <div className="container mx-auto h-full">
-        <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
-          {/*text */}
-          <div className="text-center xl:text-left order-2 xl:order-none ">
-            <span className="text-xl">Software Developer</span>
-            <h1 className="h1 mb-6">
-              Hello I'm <br />
-              <span className="text-accent">
-                Acha Solomon Ona</span>
-            </h1>
-            <p className="max-w[500px] mb-9 text-white/80">
-              I excel at crafting elegant digital experience and I am proficient in various programing languages and technologies.
-            </p>
-            {/* btn and socials */}
-            <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="uppercase flex items-center gap-2"
-                onClick={handleDownload}
-                type="button"
-              >
-                <span>Download CV</span>
-                <FiDownload className="text-xl" />
-              </Button>
-              <div className="mb-8 xl:mb-0 ">
-                <Socials 
-                  containerStyles="flex gap-6" 
-                  iconStyles="w-9 h-9 border border-accent rounded-full flex justify-center items-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500"
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* photo */}
-          <div className="order-1 xl:order-none mb-8 xl:mb-0">
-            <Photo/>
-          </div>
-        </div>
-      </div>
-      <Stats/>
+export default function Home() {
+  return <>
+    <section className="hero wrap" id="home">
+      <div className="hero-copy"><p className="eyebrow">SOFTWARE ENGINEER · AI INTEGRATION · TECHNICAL LEAD</p><h1>I engineer digital<br />systems that solve<br /><em>real-world</em> problems.</h1><p className="hero-description">I’m Solomon Ona. I build web, mobile, and desktop software that connects financial operations, intelligent verification, and everyday business workflows—from system design to delivery.</p><div className="hero-actions"><Link className="button" href="/work">Explore my work <ArrowRight size={18}/></Link><Link className="button button-outline" href="/contact">Let’s talk <MessageCircle size={17}/></Link></div><div className="hero-location"><span><i/>Software engineering & technical leadership</span><span><MapPin size={13}/>Abuja, Nigeria</span></div></div>
+      <div className="hero-visual"><div className="hero-beam"/><div className="hero-code" aria-hidden="true"><span>understand(problem);</span><span>design(solution);</span><span>buildWithPurpose();</span><b>_</b></div><svg className="hero-network" viewBox="0 0 400 430" fill="none" aria-hidden="true"><path d="m90 350 70-220 70 220M125 240h70m-85 50h100M30 350h340M160 130V70m-10 0h20M30 350 160 130l210 220M75 350l85-220 160 220M120 350l40-220 100 220" stroke="currentColor" strokeWidth="1"/><path d="M10 365h380M10 380h380" stroke="currentColor"/></svg><Image className="hero-portrait" src="/assets/me.png" width={877} height={1122} priority alt="Solomon Ona" sizes="(max-width: 760px) 90vw, 43vw"/><div className="portrait-label"><span>SOLOMON ONA</span><small>Engineering · Quality · Delivery</small></div></div>
     </section>
-  )
+    <section className="section wrap selected-section" id="selected-work"><div className="section-heading"><div><p className="eyebrow">SELECTED WORK</p><h2>Building impactful<br />solutions across industries.</h2></div><Link href="/work" className="text-link">View all projects <ArrowRight size={17}/></Link></div><div className="project-grid">{featuredProjects.map((project,index) => <ProjectCard project={project} index={index} key={project.slug}/>)}</div><p className="quiet-note">Selected work across financial technology, e-commerce, and childcare. Explore each project for screenshots and details.</p></section>
+    <section className="section wrap additional-work"><div className="section-heading"><div><p className="eyebrow">CLIENT & SPECIALIST ENGAGEMENTS</p><h2>Banking, biometrics,<br />and enterprise applications.</h2></div><p className="engagement-intro">Contract work across banking, document tracking, and AI-enabled biometrics, alongside volunteer mobile development at Nobzo.</p></div><EngagementList projects={additionalProjects}/></section>
+    <section className="section wrap about-skills" id="about"><div className="about-summary"><p className="eyebrow">ABOUT ME</p><h2>Engineering depth.<br />Intelligent solutions.</h2><p>I bring together full-stack engineering, applied AI/computer vision, and technical leadership. My work spans Java banking services, Laravel platforms, React Native apps, and C#/WPF biometrics—grounded in the business problem each system needs to solve.</p><Link className="button button-outline button-small" href="/about">More about my background <ArrowRight size={15}/></Link></div><div className="expertise-list">{[[Code2,"Full-stack development","Frontend & backend"],[Layers3,"System design","Architecture & data"],[Database,"AI & system integration","Computer vision & APIs"],[Users,"Technical leadership","Code review & delivery"]].map(([Icon,title,detail]) => <div key={title}><Icon size={23} strokeWidth={1.5}/><div><h3>{title}</h3><p>{detail}</p></div></div>)}</div><div className="tech-stack" id="skills"><p className="eyebrow">TECH STACK</p><div className="tech-grid">{stack.map(([Icon,label,color]) => <div key={label}><Icon style={{color}} aria-hidden="true"/><span>{label}</span></div>)}</div><Link className="text-link" href="/resume">Experience & capabilities <ArrowUpRight size={14}/></Link></div></section>
+    <section className="section wrap approach-section" id="approach"><div><p className="eyebrow">MY APPROACH</p><h2>From requirements<br />to working software.</h2></div><ol className="process-steps">{[["Understand","Clarify the problem, users, and requirements."],["Design","Define the application structure and data."],["Build","Implement features and review the code."],["Validate","Test functionality and stakeholder needs."],["Deliver","Oversee deployment and improve the system."]].map(([title,description],index) => <li key={title}><span className="step-number">{index+1}</span><h3>{title}</h3><p>{description}</p></li>)}</ol></section>
+    <section className="wrap collaboration-panel"><div><h2>Have a problem worth solving?</h2><p>Let’s discuss the engineering behind your next system.</p><div className="collaboration-tags"><span><i/>Software engineering</span><span>Technical collaboration</span></div></div><Link className="button" href="/contact">Let’s build something meaningful <ArrowRight size={17}/></Link><div className="cta-globe" aria-hidden="true"/></section>
+  </>;
 }
-
-export default Home

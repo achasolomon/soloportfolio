@@ -1,29 +1,14 @@
-import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-
 import Header from "@/components/Header";
-import PageTransition from "@/components/PageTransition";
-import StairTransition from "@/components/StairTransition";
-
-const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains_mono",
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"]
-});
+import BrandMark from "@/components/BrandMark";
+import Link from "next/link";
+import { FaGithub } from "react-icons/fa";
+import { Mail } from "lucide-react";
 
 export const metadata = {
-  title: "Solomon",
-  description: "created by Solomon Acha",
+  title: { default: "Solomon Ona | Software Engineer & AI Integration", template: "%s | Solomon Ona" },
+  description: "Solomon Ona is a software engineer working across financial systems, full-stack applications, AI/computer-vision integration, mobile development, and technical leadership.",
 };
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-    <body className={`${jetBrainsMono.variable} font-jetbrains`}>
-      <Header />
-      <StairTransition />
-      <PageTransition>{children}</PageTransition>
-    </body>
-  </html>
-  ); 
+export default function RootLayout({children}) {
+  return <html lang="en"><body><a className="skip-link" href="#main">Skip to content</a><Header/><main id="main">{children}</main><footer className="site-footer wrap"><Link className="footer-brand" href="/"><BrandMark/><span>Solomon Ona <small>Software Engineer</small></span></Link><div className="footer-socials"><a href="https://github.com/achasolomon" aria-label="GitHub"><FaGithub/></a><a href="mailto:solomoneyen@gmail.com" aria-label="Email Solomon Ona"><Mail size={18}/></a></div><span className="footer-copyright">© {new Date().getUTCFullYear()} Solomon Ona.</span></footer></body></html>;
 }
